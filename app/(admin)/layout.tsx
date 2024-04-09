@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import "../globals.css";
 import { Outfit } from "next/font/google";
 import StoreIcon from "@/components/icons/store";
+import { usePathname } from "next/navigation";
 
 const fontFamily = Outfit({
   subsets: ["latin"],
@@ -13,11 +16,14 @@ const Layout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const pathname = usePathname();
   const drawerItems = [
+    { title: "Grocery Items", path: "/admin/grocery-items" },
     { title: "Orders", path: "/admin/orders" },
     { title: "Users", path: "/admin/users" },
-    { title: "Grocery Items", path: "/admin/grocery-items" },
   ];
+
+  console.log("Path : ", pathname);
 
   return (
     <html>
@@ -34,10 +40,24 @@ const Layout = ({
         </div>
         <div className="h-full w-64 border-r transition-all">
           {drawerItems.map((item) => (
-            <div key={item.path}>
-              <Link href={item.path}>
-                <p>{item.title}</p>
-              </Link>
+            <div
+              key={item.path}
+              className={`flex items-center relative m-1 cursor-pointer rounded-sm transition-colors ${
+                pathname === item.path
+                  ? "bg-primary-100"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              <div className="p-2 flex-grow">
+                <Link href={item.path}>
+                  <p>{item.title}</p>
+                </Link>
+              </div>
+              <div
+                className={`h-full w-[6px] rounded-l-full absolute top-0 right-0 transition-colors ${
+                  pathname === item.path ? "bg-primary-900" : "bg-gray-400"
+                }`}
+              ></div>
             </div>
           ))}
         </div>
