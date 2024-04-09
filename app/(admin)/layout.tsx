@@ -5,6 +5,9 @@ import "../globals.css";
 import { Outfit } from "next/font/google";
 import StoreIcon from "@/components/icons/store";
 import { usePathname } from "next/navigation";
+import OrdersIcon from "@/components/icons/orders";
+import UserIcon from "@/components/icons/user";
+import GroceryIcon from "@/components/icons/grocery";
 
 const fontFamily = Outfit({
   subsets: ["latin"],
@@ -18,12 +21,22 @@ const Layout = ({
 }>) => {
   const pathname = usePathname();
   const drawerItems = [
-    { title: "Grocery Items", path: "/admin/grocery-items" },
-    { title: "Orders", path: "/admin/orders" },
-    { title: "Users", path: "/admin/users" },
+    {
+      title: "Grocery Items",
+      path: "/admin/grocery-items",
+      icon: <GroceryIcon className="mr-2" />,
+    },
+    {
+      title: "Orders",
+      path: "/admin/orders",
+      icon: <OrdersIcon className="mr-2" />,
+    },
+    {
+      title: "Users",
+      path: "/admin/users",
+      icon: <UserIcon className="mr-2" />,
+    },
   ];
-
-  console.log("Path : ", pathname);
 
   return (
     <html>
@@ -45,11 +58,12 @@ const Layout = ({
               className={`flex items-center relative m-1 cursor-pointer rounded-sm transition-colors ${
                 pathname === item.path
                   ? "bg-primary-100"
-                  : "bg-gray-200 hover:bg-gray-300"
+                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
               }`}
             >
               <div className="p-2 flex-grow">
-                <Link href={item.path}>
+                <Link href={item.path} className="flex items-center h-full">
+                  {item?.icon}
                   <p>{item.title}</p>
                 </Link>
               </div>

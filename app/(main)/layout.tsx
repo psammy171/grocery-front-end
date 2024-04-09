@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={fontFamily.className}>
         <Header />
-        <div className="container mx-auto">{children}</div>
+        <div className="container mx-auto px-1">{children}</div>
         <Toaster
           position="top-right"
           toastOptions={{
