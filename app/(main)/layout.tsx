@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Cabin } from "next/font/google";
 import "../globals.css";
-import Header from "./header";
 import { Toaster } from "react-hot-toast";
 import Session from "./session-provider";
 
@@ -20,10 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fontFamily.className}>
-        <Header />
-        <Session>
-          <div className="container mx-auto px-1">{children}</div>
-        </Session>
+        <Session>{children}</Session>
         <Toaster
           position="top-right"
           toastOptions={{
