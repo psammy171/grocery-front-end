@@ -22,11 +22,11 @@ const Button = forwardRef(
       <button
         ref={ref}
         className={cn(
-          "transition-all flex justify-center m-1 px-3 py-[6px] hover:opacity-80 rounded border-2 border-primary-600",
+          "transition-all flex justify-center m-1 px-3 py-[6px] hover:opacity-80 rounded border-2 border-primary-900",
           `${
             variant === "secondary"
-              ? "bg-transparent text-primary-600"
-              : "bg-primary-600 text-white"
+              ? "bg-transparent text-primary-900"
+              : "bg-primary-900 text-white"
           }`,
           className
         )}

@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../ui/button";
@@ -40,7 +40,9 @@ const Profile = () => {
           </div>
         </Link>
         <div className="m-1">
-          <Button className="w-full m-0">Sign Out</Button>
+          <Button className="w-full m-0" onClick={() => signOut()}>
+            Sign Out
+          </Button>
         </div>
       </div>
     </div>
