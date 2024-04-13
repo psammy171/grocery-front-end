@@ -3,6 +3,7 @@ import { Cabin } from "next/font/google";
 import "../globals.css";
 import Header from "./header";
 import { Toaster } from "react-hot-toast";
+import Session from "./session-provider";
 
 const fontFamily = Cabin({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={fontFamily.className}>
         <Header />
-        <div className="container mx-auto px-1">{children}</div>
+        <Session>
+          <div className="container mx-auto px-1">{children}</div>
+        </Session>
         <Toaster
           position="top-right"
           toastOptions={{
