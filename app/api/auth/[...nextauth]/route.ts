@@ -1,3 +1,4 @@
+import { axiosAuth } from "@/lib/api/axios";
 import { AuthOptions, Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
@@ -24,24 +25,15 @@ export const authOptions: AuthOptions = {
       async authorize(credentials) {
         const email = credentials?.email;
         const password = credentials?.password;
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email,
-              password,
-            }),
-          }
-        );
-        if (res.ok) {
-          const user = await res.json();
-          return user;
+        try {
+          const res = await axiosAuth.post(`/login`, {
+            email,
+            password,
+          });
+          return res.data;
+        } catch (err) {
+          return null;
         }
-        return null;
       },
     }),
   ],

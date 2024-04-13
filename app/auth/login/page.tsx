@@ -70,10 +70,10 @@ const Login = () => {
   return (
     <div>
       <form
-        className="max-w-sm border shadow-md mx-auto mt-[10%]"
+        className="max-w-sm border rounded-md shadow-md mx-auto mt-[10%]"
         onSubmit={loginHandler}
       >
-        <p className="font-semibold text-center text-2xl py-2 border-b">
+        <p className="font-semibold text-center text-2xl py-3 border-b">
           Login
         </p>
         <div className="p-4">
