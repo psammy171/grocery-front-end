@@ -73,7 +73,7 @@ const Login = () => {
         className="max-w-sm border rounded-md shadow-md mx-auto mt-[10%]"
         onSubmit={loginHandler}
       >
-        <p className="font-semibold text-center text-2xl py-3 border-b">
+        <p className="font-bold text-primary-900 text-center text-2xl py-3 border-b">
           Login
         </p>
         <div className="p-4">
@@ -100,7 +100,7 @@ const Login = () => {
           </div>
         </div>
         <p className="text-center mb-4 text-sm">
-          New to the website?{" "}
+          New to the website?{"    "}
           <Link
             href="/auth/signup"
             className="font-semibold text-blue-700 hover:text-blue-800"

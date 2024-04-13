@@ -78,8 +78,8 @@ const SignUp = () => {
         className="max-w-sm border rounded-md shadow-md mx-auto mt-[10%]"
         onSubmit={signupHandler}
       >
-        <p className="font-semibold text-center text-2xl py-3 border-b">
-          Login
+        <p className="font-bold text-primary-900 text-center text-2xl py-3 border-b">
+          Sign Up
         </p>
         <div className="p-4">
           <Label inputLabel="Name" className="mb-0" />
@@ -113,7 +113,7 @@ const SignUp = () => {
           </div>
         </div>
         <p className="text-center mb-4 text-sm">
-          Already registered?
+          Already registered?{"    "}
           <Link
             href="/auth/login"
             className="font-semibold text-blue-700 hover:text-blue-800"

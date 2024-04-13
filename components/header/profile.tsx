@@ -49,7 +49,15 @@ const Profile = () => {
           </Link>
         )}
         <div className="m-1">
-          <Button className="w-full m-0" onClick={() => signOut()}>
+          <Button
+            className="w-full m-0"
+            onClick={() =>
+              signOut({
+                callbackUrl: "/auth/login",
+                redirect: true,
+              })
+            }
+          >
             Sign Out
           </Button>
         </div>
