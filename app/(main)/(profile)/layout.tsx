@@ -10,6 +10,8 @@ import UserIcon from "@/components/icons/user";
 import GroceryIcon from "@/components/icons/grocery";
 import Logo from "@/components/header/logo";
 import Profile from "@/components/header/profile";
+import ProfileIcon from "@/components/icons/profile";
+import AddressIcon from "@/components/icons/address";
 
 const fontFamily = Outfit({
   subsets: ["latin"],
@@ -26,17 +28,17 @@ const Layout = ({
     {
       title: "Profile",
       path: "/profile",
-      icon: <GroceryIcon className="mr-2" />,
+      icon: <ProfileIcon className="mr-2 w-5 h-5" />,
     },
     {
       title: "My Orders",
       path: "/profile/my-orders",
-      icon: <OrdersIcon className="mr-2" />,
+      icon: <OrdersIcon className="mr-2 w-5 h-5" />,
     },
     {
-      title: "Address",
+      title: "Address Book",
       path: "/profile/address",
-      icon: <UserIcon className="mr-2" />,
+      icon: <AddressIcon className="mr-2 w-5 h-5 p-[1px]" />,
     },
   ];
 

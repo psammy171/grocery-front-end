@@ -1,9 +1,7 @@
 const Admin = () => {
   return (
     <div>
-      <p className="bg-red-500 h-60">Admin page</p>
-      <p className="bg-red-500 h-60">Admin page</p>
-      <p className="bg-red-500 h-60">Admin page</p>
+      <p>Admin page</p>
     </div>
   );
 };

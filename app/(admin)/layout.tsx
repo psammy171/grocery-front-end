@@ -9,6 +9,7 @@ import UserIcon from "@/components/icons/user";
 import GroceryIcon from "@/components/icons/grocery";
 import Logo from "@/components/header/logo";
 import Profile from "@/components/header/profile";
+import DashboardIcon from "@/components/icons/dashboard";
 
 const Layout = ({
   children,
@@ -18,19 +19,24 @@ const Layout = ({
   const pathname = usePathname();
   const drawerItems = [
     {
+      title: "Dashboard",
+      path: "/admin",
+      icon: <DashboardIcon className="mr-2 w-5 h-5 p-[1px]" />,
+    },
+    {
       title: "Grocery Items",
       path: "/admin/grocery-items",
-      icon: <GroceryIcon className="mr-2" />,
+      icon: <GroceryIcon className="mr-2 w-5 h-5 p-[1px]" />,
     },
     {
       title: "Orders",
       path: "/admin/orders",
-      icon: <OrdersIcon className="mr-2" />,
+      icon: <OrdersIcon className="mr-2 w-5 h-5" />,
     },
     {
       title: "Users",
       path: "/admin/users",
-      icon: <UserIcon className="mr-2" />,
+      icon: <UserIcon className="mr-2 w-5 h-5 p-[2px]" />,
     },
   ];
 
