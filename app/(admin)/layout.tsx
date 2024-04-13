@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import "../globals.css";
-import StoreIcon from "@/components/icons/store";
 import { usePathname } from "next/navigation";
 import OrdersIcon from "@/components/icons/orders";
 import UserIcon from "@/components/icons/user";

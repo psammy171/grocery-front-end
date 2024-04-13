@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Cabin } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Session from "./session-provider";
 
-const fontFamily = Cabin({ subsets: ["latin"], weight: ["400", "600", "700"] });
+const fontFamily = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",

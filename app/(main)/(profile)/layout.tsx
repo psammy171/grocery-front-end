@@ -2,21 +2,12 @@
 
 import Link from "next/link";
 import "../../globals.css";
-import { Outfit } from "next/font/google";
-import StoreIcon from "@/components/icons/store";
 import { usePathname } from "next/navigation";
 import OrdersIcon from "@/components/icons/orders";
-import UserIcon from "@/components/icons/user";
-import GroceryIcon from "@/components/icons/grocery";
 import Logo from "@/components/header/logo";
 import Profile from "@/components/header/profile";
 import ProfileIcon from "@/components/icons/profile";
 import AddressIcon from "@/components/icons/address";
-
-const fontFamily = Outfit({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
 
 const Layout = ({
   children,
@@ -43,7 +34,7 @@ const Layout = ({
   ];
 
   return (
-    <div className={`${fontFamily.className} flex relative h-screen pt-12`}>
+    <div className={`flex relative h-screen pt-12`}>
       <div className="h-12 absolute top-0 bg-primary-900 w-full flex items-center px-4">
         <Logo />
         <span className="flex-grow"></span>
