@@ -8,6 +8,8 @@ import { usePathname } from "next/navigation";
 import OrdersIcon from "@/components/icons/orders";
 import UserIcon from "@/components/icons/user";
 import GroceryIcon from "@/components/icons/grocery";
+import Logo from "@/components/header/logo";
+import Profile from "@/components/header/profile";
 
 const fontFamily = Outfit({
   subsets: ["latin"],
@@ -41,14 +43,9 @@ const Layout = ({
   return (
     <div className={`${fontFamily.className} flex relative h-screen pt-12`}>
       <div className="h-12 absolute top-0 bg-primary-900 w-full flex items-center px-4">
-        <Link href={"/"}>
-          <StoreIcon className="text-white w-5 h-5 cursor-pointer hover:scale-110 transition-all" />
-        </Link>
-        <p className="mx-2 text-white italic font-semibold">Grocery Store</p>
+        <Logo />
         <span className="flex-grow"></span>
-        <span className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer text-primary-900">
-          G
-        </span>
+        <Profile />
       </div>
       <div className="h-full w-64 border-r transition-all">
         {drawerItems.map((item) => (
