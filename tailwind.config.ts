@@ -26,9 +26,10 @@ const config: Config = {
           800: "#259d84",
           900: "#0d9276",
         },
+        error: "#B00020",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
 export default config;

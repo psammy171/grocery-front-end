@@ -1,6 +1,8 @@
-import { Outfit } from "next/font/google";
+import { Cabin } from "next/font/google";
+import "../globals.css";
+import { Toaster } from "react-hot-toast";
 
-const fontFamily = Outfit({
+const fontFamily = Cabin({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
@@ -17,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fontFamily.className}>{children}</body>
+      <body className={fontFamily.className}>
+        {children}
+        <Toaster position="top-right" />
+      </body>
     </html>
   );
 }
