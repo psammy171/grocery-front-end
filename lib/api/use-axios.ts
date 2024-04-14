@@ -41,6 +41,8 @@ const useAxios = () => {
       axiosApi.interceptors.response.eject(responseInterceptor);
     };
   }, [session, refreshToken]);
+
+  return axiosApi;
 };
 
 export default useAxios;
