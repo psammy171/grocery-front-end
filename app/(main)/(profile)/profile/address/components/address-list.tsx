@@ -17,7 +17,6 @@ const AddressList = () => {
       try {
         const res = await axios.get("/address");
         setValue("addressList", res.data);
-        console.log("List", res.data);
         setFetching(false);
       } catch (err) {
         setFetching(false);
