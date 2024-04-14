@@ -4,6 +4,9 @@ import { Address } from "@/types/address";
 import { useFormContext } from "react-hook-form";
 import { Form } from "../page";
 import DeleteAction from "./delete-action";
+import OtherIcon from "@/components/icons/other";
+import HomeIcon from "@/components/icons/home";
+import HotelIcon from "@/components/icons/hotel";
 
 interface Props {
   address: Address;
@@ -18,10 +21,28 @@ const AddressItem = ({ address }: Props) => {
     setValue("open", true);
   };
 
+  const getIcon = () => {
+    switch (address.label.toLocaleLowerCase()) {
+      case "house":
+        return <HomeIcon />;
+      case "home":
+        return <HomeIcon />;
+      case "office":
+        return <HotelIcon />;
+      case "work":
+        return <HotelIcon />;
+      case "hotel":
+        return <HotelIcon />;
+      default:
+        return <OtherIcon />;
+    }
+  };
+
   return (
     <>
       <div className="border rounded-md p-2 my-2 bg-gray-50">
         <div className="flex items-center gap-3">
+          {getIcon()}
           <p className="font-semibold">{address.label || "Other"}</p>
           <span className="flex-grow"></span>
           <EditIcon
