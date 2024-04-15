@@ -1,7 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/store";
 import { Item } from "@/types/Item";
-import { itemActions } from "@/store/items/item-slice";
-import { cartActions } from "@/store/cart/cart-slice";
 import { addItemToCart, removeItemFromCart } from "@/store/cart/cart-actions";
 import useAxios from "@/lib/api/use-axios";
 
@@ -53,14 +51,27 @@ const ItemComponent = ({
 const ItemList = () => {
   const items = useAppSelector((state) => state.items.items);
   const loading = useAppSelector((state) => state.items.loading);
+  const cartItems = useAppSelector((state) => state.cart.items);
+
+  const getCartCount = (item: Item) => {
+    const itemFromCart = cartItems.find(
+      (cartItem) => cartItem.groceryItemId === item.id
+    );
+    if (!itemFromCart) return 0;
+    return itemFromCart.quantity;
+  };
 
   return (
     <div>
       {loading && <p>Fetching items</p>}
       {!loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {items.map(({ item, cartQuantity }) => (
-            <ItemComponent key={item.id} item={item} quantity={cartQuantity} />
+          {items.map((item) => (
+            <ItemComponent
+              key={item.id}
+              item={item}
+              quantity={getCartCount(item)}
+            />
           ))}
         </div>
       )}

@@ -1,14 +1,9 @@
 import { Item } from "@/types/Item";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type ListItem = {
-  item: Item;
-  cartQuantity: number;
-};
-
 type SliceType = {
   loading: boolean;
-  items: ListItem[];
+  items: Item[];
 };
 
 const initialState: SliceType = {
@@ -20,23 +15,9 @@ const itemsSlice = createSlice({
   name: "items",
   initialState,
   reducers: {
-    init: (state, action: PayloadAction<ListItem[]>) => {
+    init: (state, action: PayloadAction<Item[]>) => {
       state.loading = false;
       state.items = action.payload;
-    },
-    addItemToCart: (state, action: PayloadAction<{ id: string }>) => {
-      const existingItem = state.items.find(
-        ({ item }) => item.id === action.payload.id
-      );
-      if (!existingItem) return;
-      existingItem.cartQuantity += 1;
-    },
-    removeItemFromCart: (state, action: PayloadAction<{ id: string }>) => {
-      const existingItem = state.items.find(
-        ({ item }) => item.id === action.payload.id
-      );
-      if (!existingItem || existingItem.cartQuantity === 0) return;
-      existingItem.cartQuantity -= 1;
     },
   },
 });
