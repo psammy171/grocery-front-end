@@ -77,7 +77,7 @@ const cartSlice = createSlice({
       state.cartId = "";
       state.items = [];
       state.total = 0;
-      window.location.assign(`/my-orders/${orderId}`);
+      window.location.assign(`/profile/my-orders/`);
     },
   },
 });

@@ -1,5 +1,7 @@
+import Orders from "@/app/(main)/(user)/my-orders/my-orders";
+
 const MyOrders = () => {
-  return <p>My orders page</p>;
+  return <Orders />;
 };
 
 export default MyOrders;
