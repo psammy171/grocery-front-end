@@ -2,7 +2,7 @@ import { Address } from "@/types/address";
 import { CartItem } from "@/types/cart-item";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Order = {
+export type Order = {
   id: string;
   total: number;
   items: CartItem[];
