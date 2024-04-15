@@ -1,5 +1,5 @@
 import { Item } from "@/types/Item";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type ListItem = {
   item: Item;
@@ -7,10 +7,12 @@ export type ListItem = {
 };
 
 type SliceType = {
+  loading: boolean;
   items: ListItem[];
 };
 
 const initialState: SliceType = {
+  loading: true,
   items: [],
 };
 
@@ -18,8 +20,9 @@ const itemsSlice = createSlice({
   name: "items",
   initialState,
   reducers: {
-    init: (state, action) => {
-      state.items = action.payload as ListItem[];
+    init: (state, action: PayloadAction<ListItem[]>) => {
+      state.loading = false;
+      state.items = action.payload;
     },
   },
 });
