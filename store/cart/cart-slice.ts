@@ -5,12 +5,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type SliceType = {
   total: number;
   cartId: string;
+  loaded: boolean;
   items: CartItem[];
 };
 
 const initialState: SliceType = {
   total: 0,
   cartId: "",
+  loaded: false,
   items: [],
 };
 
@@ -30,6 +32,7 @@ const cartSlice = createSlice({
       state.cartId = payload.cartId || "";
       state.total = payload.total;
       state.items = payload.items;
+      state.loaded = true;
     },
     addItem: (state, action: PayloadAction<{ item: Item; cartId: string }>) => {
       const item = action.payload.item;
@@ -61,7 +64,9 @@ const cartSlice = createSlice({
       if (!existingItem) return;
       if (existingItem.quantity === 1) {
         state.total -= item.price;
-        state.items.filter((cartItem) => cartItem.groceryItemId !== item.id);
+        state.items = state.items.filter(
+          (cartItem) => cartItem.groceryItemId !== item.id
+        );
       } else {
         existingItem.quantity -= 1;
         state.total -= item.price;
