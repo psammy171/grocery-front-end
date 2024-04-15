@@ -6,6 +6,7 @@ import { intializeCart } from "@/store/items/item-actions";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ItemList from "./item-list";
+import { initCart } from "@/store/cart/cart-actions";
 
 export default function Home() {
   const axios = useAxios();
@@ -14,6 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(intializeCart(axios));
+    dispatch(initCart(axios));
   }, [axios, dispatch]);
 
   useEffect(() => {

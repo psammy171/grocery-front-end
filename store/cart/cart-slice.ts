@@ -18,8 +18,22 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<{ item: Item }>) => {
+    init: (
+      state,
+      action: PayloadAction<{
+        total: number;
+        items: CartItem[];
+        cartId?: string;
+      }>
+    ) => {
+      const { payload } = action;
+      state.cartId = payload.cartId || "";
+      state.total = payload.total;
+      state.items = payload.items;
+    },
+    addItem: (state, action: PayloadAction<{ item: Item; cartId: string }>) => {
       const item = action.payload.item;
+      state.cartId = action.payload.cartId;
       const existingItem = state.items.find(
         (cartItem) => item.id === cartItem.item.id
       );
@@ -30,7 +44,7 @@ const cartSlice = createSlice({
           {
             quantity: 1,
             groceryItemId: item.id,
-            orderId: state.cartId,
+            orderId: action.payload.cartId,
             item: item,
           },
         ];
