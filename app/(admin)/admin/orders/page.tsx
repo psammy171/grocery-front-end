@@ -1,9 +1,7 @@
+import AllOrders from "./all-orders";
+
 const Orders = () => {
-  return (
-    <div>
-      <p>All orders admin</p>
-    </div>
-  );
+  return <AllOrders />;
 };
 
 export default Orders;
