@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/ui/button";
-import PopUp from "@/components/ui/pop-up";
 import useAxios from "@/lib/api/use-axios";
 import { useAppDispatch, useAppSelector } from "@/store";
 import {
