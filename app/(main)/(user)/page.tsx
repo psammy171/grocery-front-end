@@ -1,7 +1,7 @@
 "use client";
 
 import useAxios from "@/lib/api/use-axios";
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { intializeCart } from "@/store/items/item-actions";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -12,15 +12,15 @@ export default function Home() {
   const axios = useAxios();
   const dispatch = useAppDispatch();
   const items = useSelector((state: any) => state.items.items);
+  const cartLoaded = useAppSelector((state) => state.cart.loaded);
 
   useEffect(() => {
     dispatch(intializeCart(axios));
-    dispatch(initCart(axios));
   }, [axios, dispatch]);
 
   useEffect(() => {
-    console.log("Items", items);
-  }, [items]);
+    if (!cartLoaded) dispatch(initCart(axios));
+  }, [axios, cartLoaded, dispatch]);
 
   return (
     <main>
