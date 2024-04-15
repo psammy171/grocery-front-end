@@ -8,6 +8,8 @@ import OtherIcon from "@/components/icons/other";
 import HomeIcon from "@/components/icons/home";
 import HotelIcon from "@/components/icons/hotel";
 import Button from "@/components/ui/button";
+import { useAppDispatch } from "@/store";
+import { checkOutCart } from "@/store/cart/cart-actions";
 
 interface Props {
   open: boolean;
@@ -16,6 +18,8 @@ interface Props {
 
 const AddressModal = ({ open, close }: Props) => {
   const axios = useAxios();
+  const dispatch = useAppDispatch();
+  const [checkingOut, setCheckingOut] = useState<boolean>(false);
   const [addressList, setAddressList] = useState<Address[]>([]);
   const [selectedAddress, setSelectedAddress] = useState<Address | undefined>();
 
@@ -48,8 +52,24 @@ const AddressModal = ({ open, close }: Props) => {
     }
   };
 
+  const onCheckOutHandler = async () => {
+    if (!selectedAddress) {
+      toast.error("Please select address");
+      return;
+    }
+    if (checkingOut) return;
+    setCheckingOut(true);
+    dispatch(checkOutCart(selectedAddress, axios));
+  };
+
   return (
-    <PopUp open={open} close={close}>
+    <PopUp
+      open={open}
+      close={() => {
+        if (checkingOut) return;
+        close();
+      }}
+    >
       <div className="w-96">
         <p className="text-xl border-b p-4">Select Address</p>
         {addressList.length === 0 && (
@@ -87,7 +107,13 @@ const AddressModal = ({ open, close }: Props) => {
               </div>
             ))}
             <div className="p-2">
-              <Button className="w-full m-0">Check out</Button>
+              <Button
+                className="w-full m-0"
+                onClick={onCheckOutHandler}
+                loading={checkingOut}
+              >
+                Check out
+              </Button>
             </div>
           </div>
         )}

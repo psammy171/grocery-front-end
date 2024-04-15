@@ -3,6 +3,7 @@ import { Axios } from "axios";
 import toast from "react-hot-toast";
 import { cartActions } from "./cart-slice";
 import { CartItem } from "@/types/cart-item";
+import { Address } from "@/types/address";
 
 export const initCart = (axios: Axios) => {
   return async (dispatch: any) => {
@@ -45,6 +46,19 @@ export const removeItemFromCart = (item: Item, axios: Axios) => {
         },
       });
       dispatch(cartActions.removeItem({ item }));
+    } catch (err) {
+      toast.error("Failed to add item to cart!");
+    }
+  };
+};
+
+export const checkOutCart = (address: Address, axios: Axios) => {
+  return async (dispatch: any) => {
+    try {
+      const res = await axios.post("/cart/checkout", {
+        addressId: address.id,
+      });
+      dispatch(cartActions.checkOut());
     } catch (err) {
       toast.error("Failed to add item to cart!");
     }

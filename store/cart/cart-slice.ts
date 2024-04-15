@@ -72,6 +72,13 @@ const cartSlice = createSlice({
         state.total -= item.price;
       }
     },
+    checkOut: (state) => {
+      const orderId = state.cartId;
+      state.cartId = "";
+      state.items = [];
+      state.total = 0;
+      window.location.assign(`/my-orders/${orderId}`);
+    },
   },
 });
 
