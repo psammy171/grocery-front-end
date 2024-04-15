@@ -9,11 +9,13 @@ import {
   removeItemFromCart,
 } from "@/store/cart/cart-actions";
 import { Item } from "@/types/Item";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AddressModal from "./address-modal";
 
 const CartItems = () => {
   const axios = useAxios();
   const dispatch = useAppDispatch();
+  const [open, setOpen] = useState<boolean>(false);
   const cart = useAppSelector((state) => state.cart);
 
   useEffect(() => {
@@ -74,10 +76,14 @@ const CartItems = () => {
           )}
         </div>
         <p className="text-right mx-4">{`Toatal : ${cart.total}`}</p>
-        <div className="mx-4 mb-4 flex justify-end">
-          <Button disabled={cart.items.length === 0}>Check out</Button>
+        <div
+          className="mx-4 mb-4 flex justify-end"
+          onClick={() => setOpen(true)}
+        >
+          <Button disabled={cart.items.length === 0}>Proceed</Button>
         </div>
       </div>
+      <AddressModal open={open} close={() => setOpen(false)} />
     </div>
   );
 };
