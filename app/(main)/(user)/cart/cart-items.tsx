@@ -36,7 +36,7 @@ const CartItems = () => {
         <p className="border-b p-4 text-xl font-semibold">Your cart</p>
         <div className="p-4">
           <p className="text-lg">Items</p>
-          {cart.items.length === 0 && <p>Np items added in the cart</p>}
+          {cart.items.length === 0 && <p>No items added in the cart</p>}
           {cart.items.length > 0 && (
             <div className="w-full bg-gray-100 rounded">
               {cart.items.map((item, idx) => (

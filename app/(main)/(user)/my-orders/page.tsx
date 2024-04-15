@@ -1,5 +1,7 @@
+import AllOrders from "./my-orders";
+
 const MyOrders = () => {
-  return <div>My orders page</div>;
+  return <AllOrders />;
 };
 
 export default MyOrders;
