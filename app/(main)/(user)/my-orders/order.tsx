@@ -34,37 +34,43 @@ const OrderDetails = ({ order }: { order: Order }) => {
         </div>
       </div>
       <div
-        className={`px-4 w-[500px] mx-auto  transition-all py-4 ${
-          open ? "static" : "absolute -z-10"
+        className={`px-4 w-[500px] mx-auto  transition-all overflow-hidden duration-300 ${
+          open ? "max-h-80" : "max-h-0"
         } bottom-0`}
       >
-        <p className="px-2 text-lg font-semibold">Order Items</p>
-        <div className="grid grid-cols-5 text-left bg-white rounded p-2">
-          <span className="col-span-2 bg-white pl-4 py-1 rounded-l-md font-semibold">
-            Item name
-          </span>
-          <span className="bg-white py-1 font-semibold">Price</span>
-          <span className="bg-white py-1 font-semibold">Quantity</span>
-          <span className="bg-white py-1 rounded-r-md font-semibold">
-            Item Total
-          </span>
-          {order.items.map((item) => (
-            <Fragment key={item.groceryItemId}>
-              <span className="col-span-2 pl-4">{item.item.name}</span>
-              <span>{item.item.price}</span>
-              <span>{item.quantity}</span>
-              <span>{item.item.price * item.quantity}</span>
-            </Fragment>
-          ))}
-        </div>
-        {order.address && (
-          <div className="pt-4 px-2">
-            <p>
-              <span className="font-semibold">Delivered at :</span>{" "}
-              {`${order.address.addressLineOne}, ${order.address.addressLineTwo}, ${order.address.city}, ${order.address.zipcode}`}
-            </p>
+        <div
+          className={`transition-all duration-300 py-4 ${
+            open ? "translate-y-0" : "-translate-y-full "
+          }`}
+        >
+          <p className="px-2 text-lg font-semibold">Order Items</p>
+          <div className="grid grid-cols-5 text-left bg-white rounded p-2">
+            <span className="col-span-2 bg-white pl-4 py-1 rounded-l-md font-semibold">
+              Item name
+            </span>
+            <span className="bg-white py-1 font-semibold">Price</span>
+            <span className="bg-white py-1 font-semibold">Quantity</span>
+            <span className="bg-white py-1 rounded-r-md font-semibold">
+              Item Total
+            </span>
+            {order.items.map((item) => (
+              <Fragment key={item.groceryItemId}>
+                <span className="col-span-2 pl-4">{item.item.name}</span>
+                <span>{item.item.price}</span>
+                <span>{item.quantity}</span>
+                <span>{item.item.price * item.quantity}</span>
+              </Fragment>
+            ))}
           </div>
-        )}
+          {order.address && (
+            <div className="pt-4 px-2">
+              <p>
+                <span className="font-semibold">Delivered at :</span>{" "}
+                {`${order.address.addressLineOne}, ${order.address.addressLineTwo}, ${order.address.city}, ${order.address.zipcode}`}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
