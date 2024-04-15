@@ -4,7 +4,8 @@ import useAxios from "@/lib/api/use-axios";
 import { useAppDispatch } from "@/store";
 import { intializeCart } from "@/store/items/item-actions";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import ItemList from "./item-list";
 
 export default function Home() {
   const axios = useAxios();
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <main>
       <p>Home page under construction</p>
+      <ItemList />
     </main>
   );
 }
