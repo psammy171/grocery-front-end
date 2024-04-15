@@ -24,6 +24,20 @@ const itemsSlice = createSlice({
       state.loading = false;
       state.items = action.payload;
     },
+    addItemToCart: (state, action: PayloadAction<{ id: string }>) => {
+      const existingItem = state.items.find(
+        ({ item }) => item.id === action.payload.id
+      );
+      if (!existingItem) return;
+      existingItem.cartQuantity += 1;
+    },
+    removeItemFromCart: (state, action: PayloadAction<{ id: string }>) => {
+      const existingItem = state.items.find(
+        ({ item }) => item.id === action.payload.id
+      );
+      if (!existingItem || existingItem.cartQuantity === 0) return;
+      existingItem.cartQuantity -= 1;
+    },
   },
 });
 
