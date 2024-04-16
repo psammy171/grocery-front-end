@@ -63,8 +63,16 @@ const OrderDetails = ({ order }: { order: Order }) => {
               </Fragment>
             ))}
           </div>
-          {order.address && (
+          {order.user && (
             <div className="pt-4 px-2">
+              <p>
+                <span className="font-semibold">Ordered By : </span>
+                {`${order.user.name} (${order.user.email})`}
+              </p>
+            </div>
+          )}
+          {order.address && (
+            <div className="pt-2 px-2">
               <p>
                 <span className="font-semibold">Delivered at :</span>{" "}
                 {`${order.address.addressLineOne}, ${order.address.addressLineTwo}, ${order.address.city}, ${order.address.zipcode}`}

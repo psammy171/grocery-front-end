@@ -1,5 +1,6 @@
 import { Address } from "@/types/address";
 import { CartItem } from "@/types/cart-item";
+import { User } from "@/types/user";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Order = {
@@ -7,6 +8,7 @@ export type Order = {
   total: number;
   date?: string;
   items: CartItem[];
+  user?: User;
   address: Address | null;
 };
 
