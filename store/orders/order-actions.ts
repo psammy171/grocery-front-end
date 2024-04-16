@@ -2,44 +2,38 @@ import { Axios } from "axios";
 import toast from "react-hot-toast";
 import { OrderByDate, orderActions } from "./order-slice";
 
-export const getMyOrders = (axios: Axios) => {
-  return async (dispatch: any) => {
-    try {
-      const res = await axios.get("/my-orders");
-      dispatch(orderActions.init({ orders: res.data }));
-    } catch (err) {
-      toast.error("Something went wrong!");
-    }
-  };
-};
+export enum OrderType {
+  PERSONAL = "/my-orders",
+  ALL = "/orders",
+}
 
-export const getAllOrders = (axios: Axios) => {
+export const getOrders = (axios: Axios, orderType: OrderType) => {
   return async (dispatch: any) => {
     try {
-      const res = await axios.get("/orders");
-      const orders = res.data;
+      const res = await axios.get(orderType);
+      const rawOrders = res.data;
       const list: any = {};
-      for (const order of orders) {
+      for (const order of rawOrders) {
         list[order.date] = list[order.date]
           ? [...list[order.date], order]
           : [order];
       }
-      const ordersByDate: OrderByDate[] = [];
+      const orders: OrderByDate[] = [];
       for (const key in list) {
         const newObj = {
           date: key,
           orders: list[key],
         };
-        ordersByDate.push(newObj);
+        orders.push(newObj);
       }
-      ordersByDate.sort((a, b) => {
+      orders.sort((a, b) => {
         if (a.date > b.date) return 1;
         if (a.date < b.date) return -1;
         return 0;
       });
       dispatch(
-        orderActions.initOrdersByUser({
-          ordersByDate: ordersByDate,
+        orderActions.init({
+          orders: orders,
         })
       );
     } catch (err) {

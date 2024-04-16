@@ -17,29 +17,20 @@ export type OrderByDate = {
 
 type SliceType = {
   loading: boolean;
-  ordres: Order[];
-  ordersByUser: OrderByDate[];
+  orders: OrderByDate[];
 };
 
 const initialState: SliceType = {
   loading: true,
-  ordres: [],
-  ordersByUser: [],
+  orders: [],
 };
 
 const orderSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    init: (state, action: PayloadAction<{ orders: Order[] }>) => {
-      state.ordres = action.payload.orders;
-      state.loading = false;
-    },
-    initOrdersByUser: (
-      state,
-      action: PayloadAction<{ ordersByDate: OrderByDate[] }>
-    ) => {
-      state.ordersByUser = action.payload.ordersByDate;
+    init: (state, action: PayloadAction<{ orders: OrderByDate[] }>) => {
+      state.orders = action.payload.orders;
       state.loading = false;
     },
   },

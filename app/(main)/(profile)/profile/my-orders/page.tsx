@@ -1,7 +1,8 @@
-import Orders from "@/app/(main)/(user)/my-orders/my-orders";
+import AllOrders from "@/components/order/all-orders";
+import { OrderType } from "@/store/orders/order-actions";
 
 const MyOrders = () => {
-  return <Orders />;
+  return <AllOrders orderType={OrderType.PERSONAL} />;
 };
 
 export default MyOrders;
