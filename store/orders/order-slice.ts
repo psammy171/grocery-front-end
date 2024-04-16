@@ -6,6 +6,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type Order = {
   id: string;
   total: number;
+  date?: Date;
   items: CartItem[];
   address: Address | null;
 };

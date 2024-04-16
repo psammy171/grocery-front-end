@@ -20,6 +20,7 @@ const OrderDetails = ({ order }: { order: Order }) => {
               Items :{" "}
               {order.items.reduce((curVal, item) => curVal + item.quantity, 0)}
             </p>
+            {order.date && <p>Date : {new Date(order.date).toDateString()}</p>}
           </span>
         </div>
         <div className="px-2 flex items-center cursor-pointer">
