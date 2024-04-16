@@ -8,9 +8,10 @@ const OrderDetails = ({ order }: { order: Order }) => {
   return (
     <div className="bg-gray-100 rounded border overflow-hidden relative my-6 transition-all">
       <div
-        className={`flex px-4 py-2 transition-colors ${
+        className={`flex px-4 py-2 transition-colors cursor-pointer ${
           open && "border-b bg-primary-100"
         }`}
+        onClick={() => setOpen((pre) => !pre)}
       >
         <div className="flex-grow">
           <p>Order Id : {order.id}</p>
@@ -23,12 +24,11 @@ const OrderDetails = ({ order }: { order: Order }) => {
             {order.date && <p>Date : {new Date(order.date).toDateString()}</p>}
           </span>
         </div>
-        <div className="px-2 flex items-center cursor-pointer">
+        <div className="px-2 flex items-center">
           <span
             className={`h-6 w-6 p-1 rounded-full transition-all duration-300 ${
               open && "rotate-180"
             }`}
-            onClick={() => setOpen((pre) => !pre)}
           >
             <ArrowIcon className="w-4 h-4" />
           </span>
