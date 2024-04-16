@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store";
 import GroceryItem from "./grocery-item";
 import useAxios from "@/lib/api/use-axios";
 import { useEffect } from "react";
-import { intializeCart } from "@/store/items/item-actions";
+import { initializeItems } from "@/store/items/item-actions";
 
 const GroceryList = () => {
   const axios = useAxios();
@@ -13,7 +13,7 @@ const GroceryList = () => {
   const items = useAppSelector((state) => state.items.items);
 
   useEffect(() => {
-    dispatch(intializeCart(axios));
+    dispatch(initializeItems(axios, true));
   }, [axios, dispatch]);
 
   return (

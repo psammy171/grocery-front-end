@@ -3,10 +3,10 @@ import { itemActions } from "./item-slice";
 import { Axios } from "axios";
 import { Item } from "@/types/Item";
 
-export const intializeCart = (axios: Axios) => {
+export const initializeItems = (axios: Axios, isAdmin?: boolean) => {
   return async (dispatch: any) => {
     try {
-      const res = await axios.get("/grocery");
+      const res = await axios.get(`/grocery${isAdmin ? "/all" : ""}`);
       const data: Item[] = res.data;
       dispatch(itemActions.init(data));
     } catch (err) {
