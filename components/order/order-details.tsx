@@ -16,7 +16,9 @@ const OrderDetails = ({ order }: { order: Order }) => {
         <div className="flex-grow">
           <p>Order Id : {order.id}</p>
           <span className="flex gap-10">
-            <p>Total : {order.total}</p>
+            <p>
+              Total : {"\u20b9"} {order.total}
+            </p>
             <p>
               Items :{" "}
               {order.items.reduce((curVal, item) => curVal + item.quantity, 0)}
@@ -66,10 +68,12 @@ const OrderDetails = ({ order }: { order: Order }) => {
                 >
                   {item.item.name}
                 </span>
-                <span className="ml-2 text-right">{item.item.price}</span>
+                <span className="ml-2 text-right">
+                  {"\u20b9"} {item.item.price}
+                </span>
                 <span className="text-right mr-1">{item.quantity}</span>
                 <span className="text-right">
-                  {item.item.price * item.quantity}
+                  {"\u20b9"} {item.item.price * item.quantity}
                 </span>
               </Fragment>
             ))}

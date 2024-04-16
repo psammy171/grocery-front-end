@@ -23,8 +23,7 @@ export default function Home() {
   }, [axios, cartLoaded, dispatch]);
 
   return (
-    <main>
-      <p>Home page under construction</p>
+    <main className="pt-4">
       <ItemList />
     </main>
   );

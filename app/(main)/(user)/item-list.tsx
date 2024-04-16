@@ -25,7 +25,9 @@ const ItemComponent = ({
     <div className="flex border rounded p-3">
       <div className="flex-grow">
         <p className="text-lg font-semibold">{item.name}</p>
-        <p>{item.price}</p>
+        <p>
+          {"\u20b9"} {item.price}
+        </p>
       </div>
       <div className="shrink-0">
         <span className="border flex gap-1 bg-gray-100 rounded">

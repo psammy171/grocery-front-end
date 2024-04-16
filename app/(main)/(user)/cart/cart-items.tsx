@@ -48,7 +48,9 @@ const CartItems = () => {
                     <p className="text-[18px] font-semibold">
                       {item.item.name}
                     </p>
-                    <p>{item.item.price}</p>
+                    <p>
+                      {"\u20b9"} {item.item.price}
+                    </p>
                   </div>
                   <div className="flex flex-col">
                     <span className="border flex gap-1 bg-white rounded">
@@ -67,7 +69,7 @@ const CartItems = () => {
                       </span>
                     </span>
                     <p className="text-right mr-1">
-                      {item.quantity * item.item.price}
+                      {"\u20b9"} {item.quantity * item.item.price}
                     </p>
                   </div>
                 </div>
@@ -75,12 +77,14 @@ const CartItems = () => {
             </div>
           )}
         </div>
-        <p className="text-right mx-4">{`Toatal : ${cart.total}`}</p>
-        <div
-          className="mx-4 mb-4 flex justify-end"
-          onClick={() => setOpen(true)}
-        >
-          <Button disabled={cart.items.length === 0}>Proceed</Button>
+        <p className="text-right mx-4">{`Toatal : \u20B9 ${cart.total}`}</p>
+        <div className="mx-4 mb-4 flex justify-end">
+          <Button
+            disabled={cart.items.length === 0}
+            onClick={() => setOpen(true)}
+          >
+            Proceed
+          </Button>
         </div>
       </div>
       <AddressModal open={open} close={() => setOpen(false)} />

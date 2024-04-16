@@ -108,7 +108,7 @@ const SignUp = () => {
           {passwordErr && <Error message={passwordErr} />}
           <div className="m-1 mt-5">
             <Button className="w-full m-0" loading={logginIn}>
-              Login
+              Sign Up
             </Button>
           </div>
         </div>
