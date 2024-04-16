@@ -56,7 +56,12 @@ const OrderDetails = ({ order }: { order: Order }) => {
             </span>
             {order.items.map((item) => (
               <Fragment key={item.groceryItemId}>
-                <span className="col-span-2 pl-4">{item.item.name}</span>
+                <span
+                  className="col-span-2 pl-4 truncate"
+                  title={item.item.name}
+                >
+                  {item.item.name}
+                </span>
                 <span>{item.item.price}</span>
                 <span>{item.quantity}</span>
                 <span>{item.item.price * item.quantity}</span>
