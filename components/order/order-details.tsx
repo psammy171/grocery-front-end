@@ -49,9 +49,13 @@ const OrderDetails = ({ order }: { order: Order }) => {
             <span className="col-span-2 bg-white pl-4 py-1 rounded-l-md font-semibold">
               Item name
             </span>
-            <span className="bg-white py-1 font-semibold">Price</span>
-            <span className="bg-white py-1 font-semibold">Quantity</span>
-            <span className="bg-white py-1 rounded-r-md font-semibold">
+            <span className="bg-white py-1 font-semibold ml-2 text-right">
+              Price
+            </span>
+            <span className="bg-white py-1 font-semibold text-right">
+              Quantity
+            </span>
+            <span className="bg-white py-1 rounded-r-md font-semibold text-right">
               Item Total
             </span>
             {order.items.map((item) => (
@@ -62,9 +66,11 @@ const OrderDetails = ({ order }: { order: Order }) => {
                 >
                   {item.item.name}
                 </span>
-                <span>{item.item.price}</span>
-                <span>{item.quantity}</span>
-                <span>{item.item.price * item.quantity}</span>
+                <span className="ml-2 text-right">{item.item.price}</span>
+                <span className="text-right mr-1">{item.quantity}</span>
+                <span className="text-right">
+                  {item.item.price * item.quantity}
+                </span>
               </Fragment>
             ))}
           </div>
