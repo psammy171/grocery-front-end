@@ -21,7 +21,7 @@ const GroceryList = () => {
       {loading && <p>Loading...</p>}
       {!loading && items.length === 0 && <p>No items created yet</p>}
       {!loading && items.length > 0 && (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 mb-4">
           {items.map((item) => (
             <GroceryItem key={item.id} item={item} axios={axios} />
           ))}

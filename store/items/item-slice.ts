@@ -25,6 +25,9 @@ const itemsSlice = createSlice({
         return item;
       });
     },
+    addItem: (state, action: PayloadAction<Item>) => {
+      state.items.push(action.payload);
+    },
   },
 });
 

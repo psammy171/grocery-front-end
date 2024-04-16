@@ -26,3 +26,14 @@ export const updateItem = (axios: Axios, item: Item) => {
     }
   };
 };
+
+export const addItem = (axios: Axios, item: Item) => {
+  return async (dispatch: any) => {
+    try {
+      const res = await axios.post("/grocery", item);
+      dispatch(itemActions.addItem(res.data));
+    } catch (err) {
+      toast.error("Something went wrong!");
+    }
+  };
+};
