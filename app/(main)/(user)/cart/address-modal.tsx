@@ -71,7 +71,7 @@ const AddressModal = ({ open, close }: Props) => {
       }}
     >
       <div className="w-96">
-        <p className="text-xl border-b p-4">Select Address</p>
+        <p className="text-xl font-semibold border-b p-4">Select Address</p>
         {addressList.length === 0 && (
           <div className="flex flex-col gap-2 items-center m-4 ">
             <p>There are no address added in your address book</p>
@@ -85,7 +85,7 @@ const AddressModal = ({ open, close }: Props) => {
             {addressList.map((address) => (
               <div
                 key={address.id}
-                className={`border rounded-md p-2 m-2 cursor-pointer transition-colors ${
+                className={`border rounded-md p-2 m-4 cursor-pointer transition-colors ${
                   selectedAddress?.id === address.id
                     ? "bg-primary-50 ring-2 ring-primary-900"
                     : "hover:bg-gray-100 bg-gray-50"
@@ -94,16 +94,17 @@ const AddressModal = ({ open, close }: Props) => {
               >
                 <div className="flex items-center gap-3">
                   {getIcon(address)}
-                  <p className="font-semibold">{address.label || "Other"}</p>
-                  <span className="flex-grow"></span>
+                  <p className="font-semibold text-[17px]">
+                    {address.label || "Other"}
+                  </p>
                 </div>
-                <p className="text-sm">{`${address.addressLineOne},  ${address.addressLineTwo}`}</p>
-                <p className="text-sm leading-3">
+                <p className="text-[15px]">{`${address.addressLineOne},  ${address.addressLineTwo}`}</p>
+                <p className="leading-3 text-[15px]">
                   {address.city}, {address.zipcode}
                 </p>
               </div>
             ))}
-            <div className="p-2">
+            <div className="px-4 pb-4">
               <Button
                 className="w-full m-0"
                 onClick={onCheckOutHandler}
