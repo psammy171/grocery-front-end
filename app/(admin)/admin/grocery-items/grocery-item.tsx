@@ -65,7 +65,7 @@ const GroceryItem = ({ item, axios }: { item: Item; axios: Axios }) => {
         !isDisabled ? "ring-2 ring-primary-900" : ""
       }`}
     >
-      {!saving && (
+      {/* {!saving && (
         <>
           {isEditable ? (
             <CloseIcon
@@ -79,7 +79,7 @@ const GroceryItem = ({ item, axios }: { item: Item; axios: Axios }) => {
             />
           )}
         </>
-      )}
+      )} */}
       <Label inputLabel="Item name" />
       <Input
         disabled={isDisabled}
@@ -94,20 +94,30 @@ const GroceryItem = ({ item, axios }: { item: Item; axios: Axios }) => {
           disabled={isDisabled}
           defaultChecked={item.archived}
           ref={isActiveRef}
-          className="rounded-sm text-primary-900 focus:ring-primary-900"
+          className="rounded-sm text-primary-900 cursor-pointer focus:ring-primary-900"
         />
-        <p>Active</p>
+        <p>Disabled</p>
       </label>
 
       <div className="flex justify-end">
-        <Button
-          disabled={isDisabled}
-          loading={saving}
-          onClick={onSaveHandler}
-          className="disabled:cursor-not-allowed disabled:bg-primary-200 disabled:border-primary-200"
-        >
-          Save
-        </Button>
+        {isDisabled && (
+          <Button onClick={() => setIsEditable(true)}>Edit</Button>
+        )}
+        {!isDisabled && (
+          <>
+            <Button variant="secondary" onClick={() => setIsEditable(false)}>
+              Cancel
+            </Button>
+            <Button
+              disabled={isDisabled}
+              loading={saving}
+              onClick={onSaveHandler}
+              className="disabled:cursor-not-allowed disabled:bg-primary-200 disabled:border-primary-200"
+            >
+              Save
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
