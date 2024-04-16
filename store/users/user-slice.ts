@@ -51,6 +51,7 @@ const usersSlice = createSlice({
             ...user,
             roles: user.roles.filter((role) => role.role !== "ADMIN"),
           };
+          return newUser;
         }
         return user;
       });

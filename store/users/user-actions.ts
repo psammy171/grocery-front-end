@@ -24,6 +24,7 @@ export const makeUserAdmin = (axios: Axios, email: string) => {
           email: email,
         })
       );
+      toast.success("User is Admin now!");
     } catch (err) {
       toast.error("Something went wrong!");
     }
@@ -41,6 +42,7 @@ export const removeUserAsAdmin = (axios: Axios, email: string) => {
           email: email,
         })
       );
+      toast.success("User is no more Admin!");
     } catch (err) {
       toast.error("Something went wrong!");
     }

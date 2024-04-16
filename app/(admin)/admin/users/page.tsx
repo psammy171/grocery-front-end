@@ -1,9 +1,7 @@
+import UserList from "./user-list";
+
 const Users = () => {
-  return (
-    <div>
-      <p>All users admin</p>
-    </div>
-  );
+  return <UserList />;
 };
 
 export default Users;
