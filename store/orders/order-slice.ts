@@ -12,7 +12,7 @@ export type Order = {
 
 export type OrderByUser = {
   user: User;
-  orders: [];
+  orders: Order[];
 };
 
 type SliceType = {
