@@ -19,6 +19,12 @@ const itemsSlice = createSlice({
       state.loading = false;
       state.items = action.payload;
     },
+    updateItem: (state, action: PayloadAction<Item>) => {
+      state.items = state.items.map((item) => {
+        if (item.id === action.payload.id) return action.payload;
+        return item;
+      });
+    },
   },
 });
 

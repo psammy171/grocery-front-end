@@ -14,3 +14,15 @@ export const intializeCart = (axios: Axios) => {
     }
   };
 };
+
+export const updateItem = (axios: Axios, item: Item) => {
+  return async (dispatch: any) => {
+    try {
+      const res = await axios.patch(`/grocery/${item.id}`, item);
+      dispatch(itemActions.updateItem(item));
+      toast.success("Item updated");
+    } catch (err) {
+      toast.error("Something went wrong!");
+    }
+  };
+};
