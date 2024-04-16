@@ -40,10 +40,12 @@ const DeleteAction = ({ id }: Props) => {
 
   return (
     <>
-      <DeleteIcon
-        className="cursor-pointer text-error hover:text-error/80 transition-colors"
+      <span
+        className="hover:bg-gray-200 px-3 py-[2px] rounded transition-colors cursor-pointer"
         onClick={() => setOpen(true)}
-      />
+      >
+        <p className="text-error">Delete</p>
+      </span>
       <PopUp open={open} close={() => setOpen(false)}>
         <div className="py-4 px-4">
           <p className="mx-1 mt-2">Are you sure want to delete address ?</p>

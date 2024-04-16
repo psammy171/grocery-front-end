@@ -71,7 +71,7 @@ const AddressForm = () => {
   return (
     <PopUp open={open} close={close}>
       <form className=" rounded w-96" onSubmit={onSubmitHandler}>
-        <p className="text-center font-semibold text-xl border-b py-2">
+        <p className="text-center font-semibold text-2xl border-b py-3">
           Address
         </p>
         <div className="p-4 border-b">
@@ -92,7 +92,7 @@ const AddressForm = () => {
           <Label inputLabel={"Zip code"} className="mt-4" />
           <Input placeholder="Zipcode" {...register("addressForm.zipcode")} />
         </div>
-        <div className="py-3 px-5">
+        <div className="p-5">
           <Button className="w-full m-0">Save</Button>
         </div>
       </form>

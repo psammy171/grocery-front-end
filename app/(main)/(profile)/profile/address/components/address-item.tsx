@@ -40,19 +40,23 @@ const AddressItem = ({ address }: Props) => {
 
   return (
     <>
-      <div className="border rounded-md p-2 my-2 bg-gray-50">
-        <div className="flex items-center gap-3">
+      <div className="border rounded-md p-4 my-3 bg-gray-50">
+        <div className="flex items-center gap-2">
           {getIcon()}
-          <p className="font-semibold">{address.label || "Other"}</p>
+          <p className="font-semibold text-[18px]">
+            {address.label || "Other"}
+          </p>
           <span className="flex-grow"></span>
-          <EditIcon
-            className="cursor-pointer text-gray-900 hover:text-gray-900/80 transition-colors"
+          <span
+            className="hover:bg-gray-200 px-3 py-[2px] rounded transition-colors cursor-pointer"
             onClick={onEditHandler}
-          />
+          >
+            <p className="text-blue-700 ">Edit</p>
+          </span>
           <DeleteAction id={address.id} />
         </div>
-        <p className="text-sm">{`${address.addressLineOne},  ${address.addressLineTwo}`}</p>
-        <p className="text-sm leading-3">
+        <p>{`${address.addressLineOne},  ${address.addressLineTwo}`}</p>
+        <p className="leading-3">
           {address.city}, {address.zipcode}
         </p>
       </div>

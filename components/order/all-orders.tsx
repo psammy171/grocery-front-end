@@ -23,14 +23,14 @@ const AllOrders = ({ orderType }: Props) => {
   return (
     <div>
       <div className="max-w-[1000px] mx-auto mt-10">
-        <p className="text-2xl font-semibold">All orders</p>
+        <p className="text-2xl font-semibold mb-1">All orders</p>
         {loading && <p>Loading...</p>}
         {!loading && orders.length === 0 && <p>No orders places yet</p>}
         {!loading && orders.length > 0 && (
           <>
             {orders.map((order) => (
-              <div key={order.date}>
-                <div className="flex items-center gap-4">
+              <div key={order.date} className="pb-1">
+                <div className="flex items-center gap-4 mt-3">
                   <p>{new Date(order.date).toDateString()}</p>
                   <span className="h-[2px] border flex-grow"></span>
                 </div>

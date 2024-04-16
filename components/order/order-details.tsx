@@ -6,7 +6,7 @@ const OrderDetails = ({ order }: { order: Order }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className="bg-gray-100 rounded border overflow-hidden relative my-6 transition-all">
+    <div className="bg-gray-100 rounded border overflow-hidden relative my-3 transition-all">
       <div
         className={`flex px-4 py-2 transition-colors cursor-pointer ${
           open && "border-b bg-primary-100"

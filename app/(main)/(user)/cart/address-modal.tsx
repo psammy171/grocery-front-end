@@ -73,13 +73,10 @@ const AddressModal = ({ open, close }: Props) => {
       <div className="w-96">
         <p className="text-xl border-b p-4">Select Address</p>
         {addressList.length === 0 && (
-          <div className="flex flex-col items-center m-4">
+          <div className="flex flex-col gap-2 items-center m-4 ">
             <p>There are no address added in your address book</p>
-            <Link
-              href={"/profile/address"}
-              className="text-blue-700 hover:text-blue-900 hover:underline"
-            >
-              Add Address
+            <Link href={"/profile/address"}>
+              <Button>Add Address</Button>
             </Link>
           </div>
         )}
