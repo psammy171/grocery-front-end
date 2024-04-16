@@ -25,9 +25,9 @@ const AllOrders = () => {
         {!loading && ordersByUser.length > 0 && (
           <>
             {ordersByUser.map((orderByUser) => (
-              <div key={orderByUser.user.email}>
+              <div key={orderByUser.date}>
                 <div className="flex items-center gap-4">
-                  <p>{orderByUser.user.name}</p>
+                  <p>{new Date(orderByUser.date).toDateString()}</p>
                   <span className="h-[2px] border flex-grow"></span>
                 </div>
                 <div className="mx-10">

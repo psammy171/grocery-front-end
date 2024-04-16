@@ -1,6 +1,6 @@
 import { Axios } from "axios";
 import toast from "react-hot-toast";
-import { OrderByUser, orderActions } from "./order-slice";
+import { OrderByDate, orderActions } from "./order-slice";
 
 export const getMyOrders = (axios: Axios) => {
   return async (dispatch: any) => {
@@ -20,29 +20,26 @@ export const getAllOrders = (axios: Axios) => {
       const orders = res.data;
       const list: any = {};
       for (const order of orders) {
-        list[order.user?.email] = list[order.user.email]
-          ? [...list[order.user.email], order]
+        list[order.date] = list[order.date]
+          ? [...list[order.date], order]
           : [order];
       }
-      const ordersByUser: OrderByUser[] = [];
+      const ordersByDate: OrderByDate[] = [];
       for (const key in list) {
         const newObj = {
-          user: list[key][0].user,
-          orders: list[key].map((item: any) => {
-            delete item.user;
-            return item;
-          }),
+          date: key,
+          orders: list[key],
         };
-        ordersByUser.push(newObj);
+        ordersByDate.push(newObj);
       }
-      ordersByUser.sort((a, b) => {
-        if (a.user.email > b.user.email) return 1;
-        if (a.user.email < b.user.email) return -1;
+      ordersByDate.sort((a, b) => {
+        if (a.date > b.date) return 1;
+        if (a.date < b.date) return -1;
         return 0;
       });
       dispatch(
         orderActions.initOrdersByUser({
-          ordersByUser: ordersByUser,
+          ordersByDate: ordersByDate,
         })
       );
     } catch (err) {

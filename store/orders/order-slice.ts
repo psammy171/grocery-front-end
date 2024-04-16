@@ -1,25 +1,24 @@
 import { Address } from "@/types/address";
 import { CartItem } from "@/types/cart-item";
-import { User } from "@/types/user";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Order = {
   id: string;
   total: number;
-  date?: Date;
+  date?: string;
   items: CartItem[];
   address: Address | null;
 };
 
-export type OrderByUser = {
-  user: User;
+export type OrderByDate = {
+  date: string;
   orders: Order[];
 };
 
 type SliceType = {
   loading: boolean;
   ordres: Order[];
-  ordersByUser: OrderByUser[];
+  ordersByUser: OrderByDate[];
 };
 
 const initialState: SliceType = {
@@ -38,9 +37,9 @@ const orderSlice = createSlice({
     },
     initOrdersByUser: (
       state,
-      action: PayloadAction<{ ordersByUser: OrderByUser[] }>
+      action: PayloadAction<{ ordersByDate: OrderByDate[] }>
     ) => {
-      state.ordersByUser = action.payload.ordersByUser;
+      state.ordersByUser = action.payload.ordersByDate;
       state.loading = false;
     },
   },
