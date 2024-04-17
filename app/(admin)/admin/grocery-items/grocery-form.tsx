@@ -53,7 +53,7 @@ const GroceryForm = ({ axios, close }: Props) => {
   };
 
   return (
-    <div className={` relative w-72 bg-white p-4`}>
+    <div className={` relative w-72 bg-white p-4 rounded-b-md`}>
       <Label inputLabel="Item name" />
       <Input ref={nameRef} placeholder="Item name" />
       <Label inputLabel="Price" />
