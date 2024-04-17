@@ -27,8 +27,8 @@ export const getOrders = (axios: Axios, orderType: OrderType) => {
         orders.push(newObj);
       }
       orders.sort((a, b) => {
-        if (a.date > b.date) return 1;
-        if (a.date < b.date) return -1;
+        if (a.date > b.date) return -1;
+        if (a.date < b.date) return 1;
         return 0;
       });
       dispatch(
