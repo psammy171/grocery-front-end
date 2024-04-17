@@ -33,7 +33,7 @@ const ProfileDetail = () => {
       }
     };
     getUserDetails();
-  }, []);
+  }, [axios]);
 
   const getIcon = (label: string) => {
     switch (label.toLocaleLowerCase()) {
