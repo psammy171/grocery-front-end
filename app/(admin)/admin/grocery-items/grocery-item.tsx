@@ -43,6 +43,10 @@ const GroceryItem = ({ item, axios }: { item: Item; axios: Axios }) => {
       toast.error("name should be minimum 3 characters");
       return;
     }
+    if (isNaN(price)) {
+      toast.error("Please enter valid price");
+      return;
+    }
     if (price < 1) {
       toast.error("Price should be positive value");
       return;
@@ -59,8 +63,8 @@ const GroceryItem = ({ item, axios }: { item: Item; axios: Axios }) => {
 
   return (
     <div
-      className={`border relative w-72 rounded bg-white p-4 ${
-        !isDisabled ? "ring-2 ring-primary-900" : ""
+      className={`border relative w-72 rounded bg-white p-4 transition-all ${
+        !isDisabled ? "ring-2 ring-primary-900 border-primary-900" : ""
       }`}
     >
       {/* {!saving && (

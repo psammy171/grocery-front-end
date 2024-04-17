@@ -41,7 +41,7 @@ const DashBoard = () => {
                   : "bg-primary-50 text-primary-900"
               } flex items-center justify-center`}
             >
-              <p className="text-4xl font-bold">{data?.totalOrders}</p>
+              <p className="text-xl font-bold">{data?.totalOrders}</p>
             </span>
             <p>{!loading && `Total ${data?.totalOrders} orders placed`}</p>
           </div>
@@ -56,7 +56,7 @@ const DashBoard = () => {
                   : "bg-primary-50 text-primary-900"
               } flex items-center justify-center`}
             >
-              <p className="text-4xl font-bold">{data?.totalUsers}</p>
+              <p className="text-xl font-bold">{data?.totalUsers}</p>
             </span>
             <p>{!loading && `Total ${data?.totalUsers} customers acquired`}</p>
           </div>
